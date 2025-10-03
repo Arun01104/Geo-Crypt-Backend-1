@@ -23,11 +23,9 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
+
+ import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -44,7 +42,7 @@ public class EpmService {
     private final JwtUtil jwtUtil;
     private final CryptoShareRefRepository cryptoShareRefRepo;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private final RestTemplate restTemplate = new RestTemplate();
 

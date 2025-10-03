@@ -4,7 +4,7 @@ import com.Geo_Crypt.EPM.Dto.AuthRequest;
 import com.Geo_Crypt.EPM.Dto.AuthResponse;
 import com.Geo_Crypt.EPM.Dto.PolygonDto;
 import com.Geo_Crypt.EPM.Entity.ExamPaper;
-import com.Geo_Crypt.EPM.Entity.Polygon;
+
 import com.Geo_Crypt.EPM.Enum.Role;
 import com.Geo_Crypt.EPM.Repository.UserRepository;
 import com.Geo_Crypt.EPM.Services.EpmService;
@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Instant;
+
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
@@ -23,7 +23,7 @@ import java.time.ZoneId;
 @RequestMapping("/api/epm")
 @RequiredArgsConstructor
 public class EpmController {
-    private final UserRepository userrepo;
+    private final UserRepository userRepo;
     private final EpmService service;
     private final org.springframework.security.crypto.password.PasswordEncoder encoder;
 
@@ -48,7 +48,7 @@ public class EpmController {
 
     @PostMapping(value = "/exams/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadExam(@RequestParam("file") MultipartFile file, @RequestParam("polygonId") Long polygonId, @RequestParam("start") String start, @RequestParam("end") String end, @RequestParam("threshold") int threshold) throws Exception {
-        ZoneId istZone = ZoneId.of("Asia/Kolkata");
+//        ZoneId istZone = ZoneId.of("Asia/Kolkata");
 
         ExamPaper p = service.uploadExam(file, polygonId,LocalDateTime.parse(start) , LocalDateTime.parse(end), threshold);
         return ResponseEntity.ok(p);
